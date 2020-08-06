@@ -1,0 +1,15 @@
+# update_ozw_config:
+#   alias: Update Open Zwave Configuration file
+#   sequence:
+#     - service: shell_command.update_ozw_config
+
+# shell_command:
+#   update_ozw_config: '/bin/bash /config/scripts/update_ozw_config.sh'
+
+'update_ozw_config':
+  alias: update_ozw_config
+  sequence:
+    - service: shell_command.update_ozw_config
+      data:
+        shell_command:
+          update_ozw_config: '/bin/bash /config/scripts/update_ozw_config.sh'

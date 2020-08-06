@@ -1,0 +1,46 @@
+lights_living_room:
+  entities:
+    - switch.living_room_ambilight
+    - light.dimmable_light_couch
+    - light.dimmable_light_tv
+lights_serre:
+  entities:
+    - switch.serre_ambilight
+lights_bed_room:
+  entities:
+    - light.dimmable_light_bed_side_dani
+    - light.dimmable_light_bed_side_sjon
+    - light.bed_room
+lights_kitchen:
+  entities: light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level
+lab:
+  entities:
+    - switch.qubino_goap_zmnhadx_flush_1_relay_switch
+    - switch.tkb_home_tz68_on_off_switch_socket_switch
+    - switch.homelab_desk_light
+lights_lab:
+  entities:
+    - switch.qubino_goap_zmnhadx_flush_1_relay_switch
+    - switch.homelab_desk_light
+lights_home:
+  entities:
+    - switch.living_room_ambilight
+    - light.dimmable_light_couch
+    - light.dimmable_light_tv
+    - switch.serre_ambilight
+    - light.dimmable_light_bed_side_dani
+    - light.dimmable_light_bed_side_sjon
+    - light.bed_room
+    - light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level
+lights_all:
+  entities:
+    - switch.living_room_ambilight
+    - light.dimmable_light_couch
+    - light.dimmable_light_tv
+    - switch.serre_ambilight
+    - light.dimmable_light_bed_side_dani
+    - light.dimmable_light_bed_side_sjon
+    - light.bed_room
+    - light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level
+    - switch.qubino_goap_zmnhadx_flush_1_relay_switch
+    - switch.homelab_desk_light

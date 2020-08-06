@@ -1,0 +1,40 @@
+###################################################
+#                                                 #
+#              Home Assistant Slaves              #
+#                                                 #
+###################################################
+
+instances:
+  - host: S1-home.local
+    port: 8123
+    secure: false
+    verify_ssl: false
+    access_token: !secret ha_slave_access_token
+    # api_password: !secret http_password
+    entity_prefix: 'slave_node_01'
+    # include:
+    #   domains:
+    #     - sensor
+    #     - switch
+    #     - group
+    #   entities:
+    #     - zwave.controller
+    # exclude:
+    #   domains:
+    #     - persistent_notification
+    #   entities:
+    #     - group.all_switches
+    # filter:
+    #   - entity_id: sensor.faulty_pc_energy
+    #     above: 100
+    #   - unit_of_measurement: W
+    #     below: 0
+    #     above: 1000
+    #   - entity_id: sensor.faulty_*_power
+    #     unit_of_measurement: W
+    #     below: 500
+    # subscribe_events:
+    #   - state_changed
+    #   - service_registered
+    #   - zwave.network_ready
+    #   - zwave.node_event

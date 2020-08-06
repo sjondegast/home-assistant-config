@@ -1,0 +1,108 @@
+switch.tkb_home_tz68_on_off_switch_socket_switch:
+  friendly_name: Audio System
+  icon: mdi:speaker
+
+switch.ambilight_piano:
+  friendly_name: Living Room Ambilight
+  icon: mdi:floor-lamp
+
+switch.serre_ambilight:
+  friendly_name: Serre Ambilights
+  icon: mdi:floor-lamp
+  automation:
+    initial_state: 'on'
+
+switch.homelab_desk_light:
+  friendly_name: Desk Light
+  icon: mdi:desk-lamp
+  automation:
+    initial_state: 'on'
+
+switch.qubino_goap_zmnhadx_flush_1_relay_switch:
+  friendly_name: Main Light
+  icon: mdi:ceiling-light
+
+light.qubino_goap_zmnhhdx_mini_dimmer_level:
+  friendly_name: Kitchen Light
+  icon: mdi:spotlight-beam
+#https://cdn.materialdesignicons.com/5.3.45/
+
+sensor.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_power:
+  friendly_name: Power Consumption
+  icon: mdi:lightning-bolt
+
+sensor.slave_node_01aeotec_limited_zwa005_trisensor_luminance:
+  friendly_name: luminance
+  icon: mdi:white-balance-sunny
+
+light.dimmable_light_bed_side_sjon:
+  friendly_name: lamp Bedside Sjon
+  icon: mdi:lamp
+
+light.dimmable_light_bed_side_dani:
+  friendly_name: lamp Bedside Dani
+  icon: mdi:lamp
+
+light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level:
+  friendly_name: spots kitchen
+  icon: mdi:spotlight-beam
+
+light.dimmable_light_6:
+  friendly_name: ceiling light bedroom
+  icon: mdi:ceiling-light
+
+light.dimmable_light_couch:
+  friendly_name: hue light couch
+  icon: mdi:lamp
+
+light.dimmable_light_tv:
+  friendly_name: hue light tv
+  icon: mdi:floor-lamp
+
+sensor.slave_node_01aeotec_limited_zwa005_trisensor_burglar:
+  friendly_name: motion sensor living room
+  icon: mdi:motion-sensor
+
+sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance:
+  friendly_name: Luminance Lab
+  icon: mdi:white-balance-sunny
+
+sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar:
+  friendly_name: Motion Sensor Lab
+  icon: mdi:motion-sensor
+
+sensor.dht_sensor_humidity:
+  friendly_name: Humidity Lab
+  icon: mdi:water-outline
+
+sensor.speedtest_ping:
+  icon: mdi:check-network-outline
+
+sensor.speedtest_download:
+  icon: mdi:download-network-outline
+
+sensor.speedtest_upload:
+  icon: mdi:upload-network-outline
+
+sensor.canon_ts300_series_black:
+  icon: mdi:water-outline
+
+sensor.canon_ts300_series_color:
+  icon: mdi:water-outline
+
+sensor.canon_ts300_series:
+  friendy_name: Canon TS300
+  icon: mdi:printer-wireless
+# mdi-floor-lamp
+# mdi-desk-lamp
+# mdi-coach-lamp
+# mdi-lamp
+# mdi-powershell
+# mdi-spotlight-beam
+# mdi-ceiling-light
+# mdi-motion-sensor
+# mdi:white-balance-sunny
+# mdi-water
+# mdi-upload-network
+# mdi-download-network
+# mdi-printer-wireless

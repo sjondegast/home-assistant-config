@@ -1,0 +1,199 @@
+###################################################
+#                                                 #
+#     Home Assistant  Configuration               #
+#                                                 #
+###################################################
+homeassistant:
+  name: home
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
+  time_zone: !secret home_timezone
+  unit_system: !secret home_unitsystem
+  customize: !include customize.yaml
+
+####################################################
+#                                                  #
+#                 Customizations                   #
+#                                                  #
+####################################################
+
+# frontend:
+#   themes: !include themes/themes.yaml
+frontend:
+  themes: !include_dir_merge_named themes/
+
+####################################################
+#                                                  #
+#                     Enables                      #
+#                                                  #
+####################################################
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+discovery:
+
+rpi_gpio:
+
+map:
+
+sun:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# http:
+#   ssl_certificate: !secret http_ssl_certificate
+#   ssl_key: !secret http_ssl_key
+
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /config/open-zwave/config
+  device_config: !include zwave_device_config.yaml
+  network_key: !secret zwave_network_key
+
+speedtestdotnet:
+  scan_interval:
+    hours: 1
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+device_tracker:
+  - platform: nmap_tracker
+    hosts: !secret network_nmap_device_tracker_hosts
+    home_interval: 10
+    exclude:
+      - 192.168.178.48
+  - platform: bluetooth_tracker
+    interval_seconds: 30
+    new_device_defaults:
+      track_new_devices: true
+    #request_rssi: true
+
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_free
+        arg: /home
+      - type: memory_use_percent
+      - type: processor_use
+      - type: swap_use_percent
+      - type: ipv4_address
+        arg: wlan0
+      - type: throughput_network_in
+        arg: wlan0
+  - platform: dht
+    sensor: DHT22
+    pin: 4
+    monitored_conditions:
+      - temperature
+      - humidity
+
+switch: #rename switch to switch 433, zwave or zigbee-sensor-nrf-kitchen -use programming naming conventions/methods/patterns to name stuff!
+  - platform: rpi_rf
+    gpio: 17
+    switches:
+      homelab_desk_light:
+        protocol: 1
+        code_on: 5510485
+        code_off: 5510484
+        #pulslength: 200
+        signal_repetitions: 20
+      serre_ambilight:
+        protocol: 1
+        #pulslength: 200
+        code_on: 5522773
+        code_off: 5522772
+        signal_repetitions: 20
+  - platform: rpi_gpio
+    ports:
+      18: LED
+
+input_boolean:
+  activate_relax_scene:
+    name: Activate relax scene
+    icon: mdi:wine
+    initial: off
+
+light:
+  - platform: group
+    name: Dimmable Hue Lights Living Room
+    entities:
+      - light.dimmable_light_tv
+      - light.dimmable_light_couch
+
+####################################################
+#                                                  #
+#                      MQTT                        #
+#                                                  #
+####################################################
+
+# mqtt:
+#   broker: !secret mqtt_broker
+#   port: !secret mqtt_port
+#   username: !secret mqtt_username
+#   password: !secret mqtt_password
+#   discovery: true
+#   discovery_prefix: 'zwave'
+#   birth_message:
+#     topic: 'hass/status'
+#     payload: 'online'
+#   will_message:
+#     topic: 'hass/status'
+#     payload: 'offline'
+
+mysensors:
+  gateways:
+    - device: mqtt
+  optimistic: false
+  persistence: true
+  retain: true
+  version: '2.0'
+
+###################################################
+#                                                 #
+#                     Custom Panels               #
+#                                                 #
+###################################################
+
+panel_custom:
+  - name: zwavegraph2
+    sidebar_title: Z-Wave Graph
+    sidebar_icon: mdi:access-point-network
+    url_path: zwave
+
+####################################################
+#                                                  #
+#                    Includes                      #
+#                                                  #
+####################################################
+remote_homeassistant: !include remote_homeassistant.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+####################################################
+#                                                  #
+#                    Testing                       #
+#                                                  #
+####################################################
+python_script:
+####################################################
+#                                                  #
+#                    Logging                       #
+#                                                  #
+####################################################
+logger:
+  default: info
+  logs:
+    # log level for HA core
+    homeassistant.core: fatal
+    pydeconz: debug
+    homeassistant.components.deconz: debug
+    # individual log level for this python script
+    homeassistant.components.python_script: debug

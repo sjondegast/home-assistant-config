@@ -1,0 +1,5 @@
+- name: relax
+  icon: 'mdi:flower-tulip'
+  entities:
+    switch.qubino_goap_zmnhadx_flush_1_relay_switch: off
+  
