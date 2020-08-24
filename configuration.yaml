@@ -73,7 +73,12 @@ device_tracker:
     new_device_defaults:
       track_new_devices: true
     #request_rssi: true
-
+  - platform: bluetooth_le_tracker
+    interval_seconds: 30
+    new_device_defaults:
+      track_new_devices: true
+    track_battery: true
+    
 sensor:
   - platform: systemmonitor
     resources:
