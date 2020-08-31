@@ -14,7 +14,7 @@
     entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
     to: '0'
     for:
-      minutes: 15
+      minutes: 30
   action:
     service: homeassistant.turn_off
     entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
@@ -25,7 +25,7 @@
     entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
     to: '254'
     for:
-      minutes: 15
+      minutes: 30
   action:
     service: homeassistant.turn_off
     entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
@@ -52,26 +52,37 @@
     entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
     to: '0'
     for:
-      minutes: 15
+      minutes: 30
   action:
     service: homeassistant.turn_off
     entity_id: switch.homelab_desk_light
 
 #HomeLab Audio System
-- alias: Turn on HomeLab audio speakers when there is movement
+- alias: Turn on HomeLab audio speakers when media_player.volumio state is playing
   trigger:
     platform: state
-    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
-    to: '8'
+    entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
+    to: 'playing'
   action:
     service: homeassistant.turn_on
     entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
 
-- alias: Turn off HomeLab audio speakers when there is movement
+- alias: Turn off HomeLab audio speakers when media_player.volumio state is idle
   trigger:
     platform: state
-    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
-    to: '0'
+    entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
+    to: 'idle'
+    for:
+      minutes: 15
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
+
+- alias: Turn off HomeLab audio speakers when media_player.volumio state is paused
+  trigger:
+    platform: state
+    entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
+    to: 'paused'
     for:
       minutes: 15
   action:
@@ -90,27 +101,10 @@
 - alias: Turn off Serre Ambilight at given time
   trigger:
     platform: time
-    at: '23:30:00'
+    at: '23:00:00'
   action:
     service: homeassistant.turn_off
     entity_id: switch.serre_ambilight
-
-#Living Room Ambilight
-- alias: Turn on Living Room Ambilight at given time
-  trigger:
-    platform: time
-    at: '18:00:00'
-  action:
-    service: homeassistant.turn_on
-    entity_id: switch.ambilight_piano
-
-- alias: Turn off Living Room Ambilight at given time
-  trigger:
-    platform: time
-    at: '23:30:00'
-  action:
-    service: homeassistant.turn_off
-    entity_id: switch.ambilight_piano
 
 #maybe also set on startup so it configures after a reboot
 
@@ -144,18 +138,41 @@
           {% endif %}
 
 #Turn on Bed Lights Right and Left
-- alias: Turn on Bed Light Right
+#TODO: change the enity id to the id of a group bed lights master bedroom and witch the entire group on
+- alias: Turn on Bed Lights
   trigger:
     platform: time
-    at: '21:30:00'
+    at: '21:00:00'
   action:
-    service: homeassistant.turn_on
-    entity_id: switch.ambilight_piano
+    service: light.turn_on
+    data:
+      brightness: 75
+      entity_id:
+        - light.dimmable_light_bed_side_dani
+        - light.dimmable_light_bed_side_sjon
 
-- alias: Turn off Living Room Ambilight at given time
+#Turn on living room ambilights @ 75%
+- alias: Turn on living room ambilights 75%
   trigger:
     platform: time
-    at: '23:30:00'
+    at: '17:30:00'
   action:
-    service: homeassistant.turn_off
-    entity_id: switch.ambilight_piano
+    service: light.turn_on
+    data:
+      brightness: 175
+      entity_id:
+        - light.dimmable_light_tv
+        - light.dimmable_light_couch
+
+#Turn on living room ambilights @ 30%
+- alias: Turn on living room ambilights 30%
+  trigger:
+    platform: time
+    at: '20:30:00'
+  action:
+    service: light.turn_on
+    data:
+      brightness: 75
+      entity_id:
+        - light.dimmable_light_tv
+        - light.dimmable_light_couch

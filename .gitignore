@@ -2,7 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore\?templates\=homeassistant
 
 .HA_VERSION
-zwcfg_0xc2257ce4.xml
+zwcfg*
 
 ### HomeAssistant ###
 # Files with personal details
