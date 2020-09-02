@@ -101,17 +101,17 @@ sensor:
       - humidity
   - platform: mqtt
     name: 'Temperature'
-    state_topic: 'sensor/workshop'
+    state_topic: 'sensor/workshop/#'
     unit_of_measurement: '°C'
     value_template: '{{ value_json.temperature }}'
   - platform: mqtt
     name: 'Humidity'
-    state_topic: 'sensor/workshop'
+    state_topic: 'sensor/workshop/#'
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
   - platform: mqtt
     name: 'Luminosity'
-    state_topic: 'sensor/workshop'
+    state_topic: 'sensor/workshop/#'
     unit_of_measurement: 'lm'
     value_template: '{{ value_json.luminosity }}'
     payload_not_available: 'unavailable'
