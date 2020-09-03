@@ -205,6 +205,32 @@ scene: !include scenes.yaml
 
 ####################################################
 #                                                  #
+#                    Recorder                      #
+#                                                  #
+####################################################
+
+recorder:
+  db_url: !secret mariadb_host
+  auto_purge: true
+  purge_keep_days: 120
+  include:
+    domains:
+      - sensor
+      - switch
+      - media_playe
+  exclude:
+    domains:
+      - automation
+      - updater
+    entity_globs:
+      - sensor.weather_*
+    entities:
+      - sun.sun # Don't record sun data
+    event_types:
+      - call_service # Don't record service calls
+
+####################################################
+#                                                  #
 #                    Testing                       #
 #                                                  #
 ####################################################
