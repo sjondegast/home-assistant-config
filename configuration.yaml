@@ -110,10 +110,10 @@ sensor:
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
   - platform: mqtt
-    name: 'Luminosity'
+    name: 'Lux'
     state_topic: 'sensor/workshop/#'
-    unit_of_measurement: 'lm'
-    value_template: '{{ value_json.luminosity }}'
+    unit_of_measurement: 'lx'
+    value_template: '{{ value_json.illuminance }}'
     payload_not_available: 'unavailable'
   - platform: mqtt
     name: 'Temperature'
@@ -126,10 +126,10 @@ sensor:
     unit_of_measurement: '%'
     value_template: '{{ value_json.humidity }}'
   - platform: mqtt
-    name: 'Luminosity'
+    name: 'Lux'
     state_topic: 'sensor/livingroom'
-    unit_of_measurement: 'lm'
-    value_template: '{{ value_json.luminosity }}'
+    unit_of_measurement: 'lx'
+    value_template: '{{ value_json.illuminance }}'
     payload_not_available: 'unavailable'
 
 switch: #rename switch to switch 433, zwave or zigbee-sensor-nrf-kitchen -use programming naming conventions/methods/patterns to name stuff!
@@ -212,7 +212,7 @@ scene: !include scenes.yaml
 recorder:
   db_url: !secret mariadb_host
   auto_purge: true
-  purge_keep_days: 120
+  purge_keep_days: 7
   include:
     domains:
       - sensor

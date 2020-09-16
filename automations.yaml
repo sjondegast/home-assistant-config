@@ -61,8 +61,8 @@
 - alias: Turn on HomeLab audio speakers when media_player.volumio state is playing
   trigger:
     platform: state
-    entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
-    to: 'playing'
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    to: '8'
   action:
     service: homeassistant.turn_on
     entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
@@ -70,24 +70,24 @@
 - alias: Turn off HomeLab audio speakers when media_player.volumio state is idle
   trigger:
     platform: state
-    entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
-    to: 'idle'
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    to: '0'
     for:
       minutes: 15
   action:
     service: homeassistant.turn_off
     entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
 
-- alias: Turn off HomeLab audio speakers when media_player.volumio state is paused
-  trigger:
-    platform: state
-    entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
-    to: 'paused'
-    for:
-      minutes: 15
-  action:
-    service: homeassistant.turn_off
-    entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
+# - alias: Turn off HomeLab audio speakers when media_player.volumio state is paused
+#   trigger:
+#     platform: state
+#     entity_id: media_player.openhome_359cb6e2_c592_e30b_da2c_b827eb55c248
+#     to: 'paused'
+#     for:
+#       minutes: 15
+#   action:
+#     service: homeassistant.turn_off
+#     entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
 
 #Serre Room Ambilight
 - alias: Turn on Serre Ambilight at given time
