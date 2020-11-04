@@ -1,0 +1,7 @@
+sensors_device_tracker_nmap_tracker:
+  device_tracker:
+    - platform: bluetooth_tracker
+      interval_seconds: 30
+      new_device_defaults:
+        track_new_devices: true
+      consider_home: 180

@@ -1,0 +1,51 @@
+###################################################
+#         Turn on living room ambilights @ 75%    #
+###################################################
+
+- alias: Turn on living room ambilights 75%
+  trigger:
+    platform: time
+    at: '17:30:00'
+  action:
+    service: light.turn_on
+    data:
+      brightness: 175
+      entity_id:
+        - light.dimmable_light_tv
+        - light.dimmable_light_couch
+
+###################################################
+#         Turn on living room ambilights @ 30%    #
+###################################################
+
+- alias: Turn on living room ambilights 30%
+  trigger:
+    platform: time
+    at: '20:30:00'
+  action:
+    service: light.turn_on
+    data:
+      brightness: 75
+      entity_id:
+        - light.dimmable_light_tv
+        - light.dimmable_light_couch
+
+###################################################
+#           Living Room Ambilight @ Piano         #
+###################################################
+
+- alias: Turn on Living Room Piano Ambilight at given time
+  trigger:
+    platform: time
+    at: '17:30:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.ambilight_piano
+
+- alias: Turn off Living Room Piano Ambilight at given time
+  trigger:
+    platform: time
+    at: '23:30:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.ambilight_piano

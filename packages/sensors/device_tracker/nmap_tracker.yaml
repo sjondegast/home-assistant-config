@@ -1,0 +1,13 @@
+sensors_device_tracker_nmap_tracker:
+  device_tracker:
+    - platform: nmap_tracker
+      hosts: !secret network_nmap_device_tracker_hosts
+      home_interval: 12
+      exclude:
+        - 192.168.178.48
+      consider_home: 180
+    - platform: bluetooth_tracker
+      interval_seconds: 30
+      new_device_defaults:
+        track_new_devices: true
+      consider_home: 180

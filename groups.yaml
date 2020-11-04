@@ -13,7 +13,7 @@ lights_bed_room:
     - light.bed_room
 lights_kitchen:
   entities: light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level
-lab:
+homelab:
   entities:
     - switch.qubino_goap_zmnhadx_flush_1_relay_switch
     - switch.tkb_home_tz68_on_off_switch_socket_switch

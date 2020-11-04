@@ -1,0 +1,9 @@
+##############################################################################
+#       ZWAVE GATEWAY                                                        #
+##############################################################################
+home_assistant_zwave_gateway_config:
+  zwave:
+    usb_path: /dev/ttyACM0
+    config_path: /config/open-zwave/config
+    device_config: !include /config/zwave_device_config.yaml
+    network_key: !secret zwave_network_key

@@ -1,0 +1,21 @@
+####################################################
+#                    Recorder                      #
+####################################################
+home_assistant_recorder:
+  recorder:
+    db_url: !secret mariadb_db_url
+    db_max_retries: 10 #integer (optional, default: 10)
+    db_integrity_check: true #boolean (optional, default: true)
+    auto_purge: true #boolean (optional, default: true)
+    purge_keep_days: 10 #integer (optional, default: 10)
+    exclude:
+      domains:
+        - automation
+        - updater
+      entity_globs:
+        - sensor.weather_*
+      entities:
+        - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+        - sensor.date
+      event_types:
+        - call_service # Don't record service calls

@@ -1,0 +1,28 @@
+###################################################
+#               HomeLab Desk Light                #
+###################################################
+- alias: Turn on HomeLab desk_light when there is movement
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    to: '8'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: device_tracker.mbp_sjon
+        state: home
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.rf_homelab_desk_light
+
+- alias: Turn off HomeLab desk_light 10 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    to: '0'
+    for:
+      minutes: 30
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.rf_homelab_desk_light

@@ -1,0 +1,19 @@
+#https://pypi.org/project/rpi-rf/
+#https://github.com/home-assistant/core/blob/dev/homeassistant/components/rpi_rf/switch.py
+switches_radiofrequency:
+  switch: #rename switch to switch 433, zwave or zigbee-sensor-nrf-kitchen -use programming naming conventions/methods/patterns to name stuff!
+    - platform: rpi_rf
+      gpio: 17
+      switches:
+        rf_homelab_desk_light:
+          protocol: 1
+          code_on: 5510485
+          code_off: 5510484
+          #pulslength: 200
+          signal_repetitions: 20
+        rf_homelab_speakers:
+          protocol: 1
+          #pulslength: 200
+          code_on: 5522773
+          code_off: 5522772
+          signal_repetitions: 20

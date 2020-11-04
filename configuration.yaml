@@ -1,8 +1,6 @@
-###################################################
-#                                                 #
-#     Home Assistant  Configuration               #
-#                                                 #
-###################################################
+#############################################################################
+#       HOME ASSISTANT CONFIG                                               #
+#############################################################################
 homeassistant:
   name: home
   latitude: !secret home_latitude
@@ -11,23 +9,19 @@ homeassistant:
   time_zone: !secret home_timezone
   unit_system: !secret home_unitsystem
   customize: !include customize.yaml
+  #https://www.home-assistant.io/docs/configuration/packages/
+  packages: !include_dir_merge_named packages/
 
-####################################################
-#                                                  #
-#                 Customizations                   #
-#                                                  #
-####################################################
+##############################################################################
+#       FRONT-END CUSTOMS                                                    #
+##############################################################################
 
-# frontend:
-#   themes: !include themes/themes.yaml
 frontend:
   themes: !include_dir_merge_named themes/
 
-####################################################
-#                                                  #
-#                     Enables                      #
-#                                                  #
-####################################################
+##############################################################################
+#       ENABLES                                                              #
+##############################################################################
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
@@ -44,114 +38,13 @@ sun:
 tts:
   - platform: google_translate
 
-# http:
-#   ssl_certificate: !secret http_ssl_certificate
-#   ssl_key: !secret http_ssl_key
+##############################################################################
+#       TESTING                                                              #
+##############################################################################
 
-zwave:
-  usb_path: /dev/ttyACM0
-  config_path: /config/open-zwave/config
-  device_config: !include zwave_device_config.yaml
-  network_key: !secret zwave_network_key
-
-speedtestdotnet:
-  scan_interval:
-    hours: 1
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-
-device_tracker:
-  - platform: nmap_tracker
-    hosts: !secret network_nmap_device_tracker_hosts
-    home_interval: 12
-    exclude:
-      - 192.168.178.48
-    consider_home: 180
-  - platform: bluetooth_tracker
-    interval_seconds: 30
-    new_device_defaults:
-      track_new_devices: true
-    consider_home: 180
-  - platform: bluetooth_le_tracker
-    interval_seconds: 30
-    new_device_defaults:
-      track_new_devices: true
-    track_battery: true
-    consider_home: 180
-
-sensor:
-  - platform: systemmonitor
-    resources:
-      - type: disk_free
-        arg: /home
-      - type: memory_use_percent
-      - type: processor_use
-      - type: swap_use_percent
-      - type: ipv4_address
-        arg: wlan0
-      - type: throughput_network_in
-        arg: wlan0
-  - platform: dht
-    sensor: DHT22
-    pin: 4
-    monitored_conditions:
-      - temperature
-      - humidity
-  - platform: mqtt
-    name: 'Temperature'
-    state_topic: 'sensor/workshop'
-    unit_of_measurement: '°C'
-    value_template: '{{ value_json.temperature }}'
-  - platform: mqtt
-    name: 'Humidity'
-    state_topic: 'sensor/workshop'
-    unit_of_measurement: '%'
-    value_template: '{{ value_json.humidity }}'
-  - platform: mqtt
-    name: 'Luminosity'
-    state_topic: 'sensor/workshop'
-    unit_of_measurement: 'lm'
-    value_template: '{{ value_json.luminosity }}'
-    payload_not_available: 'unavailable'
-  - platform: mqtt
-    name: 'Temperature'
-    state_topic: 'sensor/livingroom'
-    unit_of_measurement: '°C'
-    value_template: '{{ value_json.temperature }}'
-  - platform: mqtt
-    name: 'Humidity'
-    state_topic: 'sensor/livingroom'
-    unit_of_measurement: '%'
-    value_template: '{{ value_json.humidity }}'
-  - platform: mqtt
-    name: 'Luminosity'
-    state_topic: 'sensor/livingroom'
-    unit_of_measurement: 'lm'
-    value_template: '{{ value_json.luminosity }}'
-    payload_not_available: 'unavailable'
-
-switch: #rename switch to switch 433, zwave or zigbee-sensor-nrf-kitchen -use programming naming conventions/methods/patterns to name stuff!
-  - platform: rpi_rf
-    gpio: 17
-    switches:
-      homelab_desk_light:
-        protocol: 1
-        code_on: 5510485
-        code_off: 5510484
-        #pulslength: 200
-        signal_repetitions: 20
-      serre_ambilight:
-        protocol: 1
-        #pulslength: 200
-        code_on: 5522773
-        code_off: 5522772
-        signal_repetitions: 20
-
-  - platform: rpi_gpio
-    ports:
-      18: LED
+#python_script:
+# hello_mqtt:
+#   topic: some_mqtt/topic/here
 
 # input_boolean:
 #   activate_relax_scene:
@@ -159,73 +52,11 @@ switch: #rename switch to switch 433, zwave or zigbee-sensor-nrf-kitchen -use pr
 #     icon: mdi:wine
 #     initial: off
 
-light:
-  - platform: group
-    name: Dimmable Hue Lights Living Room
-    entities:
-      - light.dimmable_light_tv
-      - light.dimmable_light_couch
-
-####################################################
-#                                                  #
-#                      MQTT                        #
-#                                                  #
-####################################################
-
-# mqtt:
-#   broker: core-mosquitto #only if the broker is running on the same hardware as home-assistant
-#   port: 1883 #default port
-#   username: 'mqttclient'
-#   password: 'k4dg_83h'
-# keepalive: 60
-# protocol: 3.1 #default protocol
-
-###################################################
-#                                                 #
-#                     Custom Panels               #
-#                                                 #
-###################################################
-
-panel_custom:
-  - name: zwavegraph2
-    sidebar_title: Z-Wave Graph
-    sidebar_icon: mdi:access-point-network
-    url_path: zwave
-
-####################################################
-#                                                  #
-#                    Includes                      #
-#                                                  #
-####################################################
+##############################################################################
+#       INCLUDES                                                             #
+##############################################################################
 remote_homeassistant: !include remote_homeassistant.yaml
 group: !include groups.yaml
-automation: !include automations.yaml
+automation: !include_dir_merge_list automation/
 script: !include scripts.yaml
 scene: !include scenes.yaml
-
-####################################################
-#                                                  #
-#                    Testing                       #
-#                                                  #
-####################################################
-
-#python_script:
-# hello_mqtt:
-#   topic: some_mqtt/topic/here
-
-####################################################
-#                                                  #
-#                    Logging                       #
-#                                                  #
-####################################################
-logger:
-  default: info
-  logs:
-    # log level for HA core
-    homeassistant.core: fatal
-    pydeconz: debug
-    homeassistant.components.deconz: debug
-    # individual log level for this python script
-    homeassistant.components.python_script: debug
-    # mqtt Logging
-    homeassistant.components.mqtt: debug

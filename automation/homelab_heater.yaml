@@ -1,0 +1,23 @@
+###################################################
+#                 HomeLab Heater                  #
+###################################################
+
+- alias: Turn on HomeLab Heater if there is movement
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    to: '8'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch
+
+- alias: Turn off HomeLab Heater 15 minutes after last movement
+  trigger:
+    platform: state
+    entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
+    to: '0'
+    for:
+      minutes: 15
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.tkb_home_tz68_on_off_switch_socket_switch

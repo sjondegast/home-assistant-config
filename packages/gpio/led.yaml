@@ -1,0 +1,5 @@
+gpio_led:
+  switch:
+    - platform: rpi_gpio
+      ports:
+        18: LED

@@ -1,0 +1,8 @@
+sensors_speedtestdotnet:
+  speedtestdotnet:
+    scan_interval:
+      hours: 1
+    monitored_conditions:
+      - ping
+      - download
+      - upload

@@ -1,0 +1,15 @@
+###################################################
+#         Turn on Bed Lights Right and Left       #
+###################################################
+#TODO: change the enity id to the id of a group bed lights master bedroom and witch the entire group on
+- alias: Turn on Bed Lights
+  trigger:
+    platform: time
+    at: '21:00:00'
+  action:
+    service: light.turn_on
+    data:
+      brightness: 75
+      entity_id:
+        - light.dimmable_light_bed_side_dani
+        - light.dimmable_light_bed_side_sjon

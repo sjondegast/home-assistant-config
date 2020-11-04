@@ -1,0 +1,8 @@
+sensors_homelab_dht22:
+  sensor:
+    - platform: dht
+      sensor: DHT22
+      pin: 4
+      monitored_conditions:
+        - temperature
+        - humidity

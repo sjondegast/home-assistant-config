@@ -1,0 +1,21 @@
+###################################################
+#             Turn on Serre Ambilight             #
+###################################################
+
+- alias: Turn on Serre Ambilight at given time
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+      below: 4
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.on_off_plug_in_unit_7
+
+- alias: Turn off Serre Ambilight at given time
+  trigger:
+    platform: time
+    at: '23:30:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.on_off_plug_in_unit_7

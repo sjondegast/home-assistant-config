@@ -1,0 +1,16 @@
+###############################################################################################
+#  Restart Home Assistant every Sunday and wednesday at 4:00 am to keep it fresh              #
+###############################################################################################
+- alias: '[System] - Restart Home Assistant after weekly backup'
+  trigger:
+    - platform: time
+      at: '05:00:00'
+  condition:
+    - condition: time
+      weekday:
+        - tue
+        - wed
+        - fri
+        - sun
+  action:
+    - service: homeassistant.restart

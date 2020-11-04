@@ -1,0 +1,16 @@
+#HOME ASSISTANT TRIGGER
+#https://www.home-assistant.io/docs/automation/trigger/
+- alias: '[system] - Set initial state rpi-rf switches after restart Home Assistant'
+  trigger:
+    - platform: homeassistant
+      event: 'start'
+  action:
+    - delay: '00:00:20'
+    - service: homeassistant.turn_on
+      entity_id:
+        - switch.rf_homelab_desk_light
+        - switch.rf_homelab_speakers
+#TODO: use state, entity-id home assistant (check logs!) home assistant has started!
+# forgot to change automations for speakers and desklight, therefore they didn't work
+# try to use condition to get previous known state and only turn on desk light and speakers if the previous state was 'on'
+# or action could be automation, only turn on speakers and desklight if there is movement.

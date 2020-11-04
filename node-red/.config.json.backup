@@ -371,7 +371,7 @@
       "actionflows_in",
       "actionflows_out"
      ],
-     "enabled": false,
+     "enabled": true,
      "local": false,
      "module": "node-red-contrib-actionflows",
      "file": "/opt/node_modules/node-red-contrib-actionflows/actionflows/actionflows.js"

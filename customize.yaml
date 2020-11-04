@@ -1,55 +1,46 @@
-switch.tkb_home_tz68_on_off_switch_socket_switch:
+###################################################
+#                      HomeLab                    #
+###################################################
+
+sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar:
+  friendly_name: Motion Sensor Lab
+  icon: mdi:motion-sensor
+
+sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance:
+  friendly_name: Luminance Lab
+  icon: mdi:white-balance-sunny
+
+sensor.dht_sensor_humidity:
+  friendly_name: Humidity Lab
+  icon: mdi:water-outline
+
+switch.rf_homelab_speakers:
   friendly_name: Audio System
   icon: mdi:speaker
 
-switch.ambilight_piano:
-  friendly_name: Living Room Ambilight
-  icon: mdi:floor-lamp
+switch.tkb_home_tz68_on_off_switch_socket_switch:
+  friendly_name: Homelab Heater
+  icon: mdi:radiator
 
-switch.serre_ambilight:
-  friendly_name: Serre Ambilights
-  icon: mdi:floor-lamp
-  automation:
-    initial_state: 'on'
-
-switch.homelab_desk_light:
+switch.rf_homelab_desk_light:
   friendly_name: Desk Light
   icon: mdi:desk-lamp
-  automation:
-    initial_state: 'on'
 
 switch.qubino_goap_zmnhadx_flush_1_relay_switch:
-  friendly_name: Main Light
+  friendly_name: HomeLab Main Light
   icon: mdi:ceiling-light
 
-light.qubino_goap_zmnhhdx_mini_dimmer_level:
-  friendly_name: Kitchen Light
-  icon: mdi:spotlight-beam
-#https://cdn.materialdesignicons.com/5.3.45/
+###################################################
+#                    Living Room                  #
+###################################################
 
-sensor.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_power:
-  friendly_name: Power Consumption
-  icon: mdi:lightning-bolt
+sensor.slave_node_01aeotec_limited_zwa005_trisensor_burglar:
+  friendly_name: motion sensor living room
+  icon: mdi:motion-sensor
 
 sensor.slave_node_01aeotec_limited_zwa005_trisensor_luminance:
   friendly_name: luminance
   icon: mdi:white-balance-sunny
-
-light.dimmable_light_bed_side_sjon:
-  friendly_name: lamp Bedside Sjon
-  icon: mdi:lamp
-
-light.dimmable_light_bed_side_dani:
-  friendly_name: lamp Bedside Dani
-  icon: mdi:lamp
-
-light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level:
-  friendly_name: spots kitchen
-  icon: mdi:spotlight-beam
-
-light.dimmable_light_6:
-  friendly_name: ceiling light bedroom
-  icon: mdi:ceiling-light
 
 light.dimmable_light_couch:
   friendly_name: hue light couch
@@ -59,21 +50,50 @@ light.dimmable_light_tv:
   friendly_name: hue light tv
   icon: mdi:floor-lamp
 
-sensor.slave_node_01aeotec_limited_zwa005_trisensor_burglar:
-  friendly_name: motion sensor living room
-  icon: mdi:motion-sensor
+switch.ambilight_piano:
+  friendly_name: Piano Smart Plug Ambilight
+  icon: mdi:floor-lamp
 
-sensor.fibaro_system_fgms001_zw5_motion_sensor_luminance:
-  friendly_name: Luminance Lab
-  icon: mdi:white-balance-sunny
+switch.on_off_plug_in_unit_7:
+  friendly_name: Serre Ambilights
+  icon: mdi:floor-lamp
 
-sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar:
-  friendly_name: Motion Sensor Lab
-  icon: mdi:motion-sensor
+light.qubino_goap_zmnhhdx_mini_dimmer_level:
+  friendly_name: Kitchen Light
+  icon: mdi:spotlight-beam
+#https://cdn.materialdesignicons.com/5.3.45/
 
-sensor.dht_sensor_humidity:
-  friendly_name: Humidity Lab
-  icon: mdi:water-outline
+###################################################
+#                    Kitchen                      #
+###################################################
+
+light.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_level:
+  friendly_name: spots kitchen
+  icon: mdi:spotlight-beam
+
+sensor.slave_node_01qubino_goap_zmnhdd1_flush_dimmer_power:
+  friendly_name: Power Consumption
+  icon: mdi:lightning-bolt
+
+###################################################
+#                    Bedroom                      #
+###################################################
+
+light.dimmable_light_bed_side_sjon:
+  friendly_name: lamp Bedside Sjon
+  icon: mdi:lamp
+
+light.dimmable_light_bed_side_dani:
+  friendly_name: lamp Bedside Dani
+  icon: mdi:lamp
+
+light.dimmable_light_6:
+  friendly_name: ceiling light bedroom
+  icon: mdi:ceiling-light
+
+###################################################
+#                    Network                      #
+###################################################
 
 sensor.speedtest_ping:
   icon: mdi:check-network-outline
@@ -87,12 +107,20 @@ sensor.speedtest_upload:
 sensor.canon_ts300_series_black:
   icon: mdi:water-outline
 
+###################################################
+#                    Utilities                    #
+###################################################
+
 sensor.canon_ts300_series_color:
   icon: mdi:water-outline
 
 sensor.canon_ts300_series:
   friendy_name: Canon TS300
   icon: mdi:printer-wireless
+###################################################
+#                      Icons                      #
+###################################################
+# https://cdn.materialdesignicons.com/5.4.55/
 # mdi-floor-lamp
 # mdi-desk-lamp
 # mdi-coach-lamp
@@ -106,3 +134,6 @@ sensor.canon_ts300_series:
 # mdi-upload-network
 # mdi-download-network
 # mdi-printer-wireless
+# mdi-radiator
+# mdi-radiator-disabled
+# mdi-radiator-off

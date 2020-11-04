@@ -1,0 +1,15 @@
+####################################################
+#                    Logging                       #
+####################################################
+home_assistant_logging:
+  logger:
+    default: debug
+    logs:
+      # log level for HA core
+      homeassistant.core: debug
+      pydeconz: debug
+      homeassistant.components.deconz: debug
+      # individual log level for this python script
+      homeassistant.components.python_script: debug
+      # mqtt Logging
+      homeassistant.components.mqtt: debug

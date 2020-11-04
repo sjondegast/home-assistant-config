@@ -1,0 +1,12 @@
+lights_lights:
+  light:
+    - platform: group
+      name: Dimmable Hue Lights Living Room
+      entities:
+        - light.dimmable_light_tv
+        - light.dimmable_light_couch
+    - platform: group
+      name: Dimmable Bed Lights all
+      entities:
+        - light.dimmable_light_bed_side_dani
+        - light.dimmable_light_bed_side_sjon
