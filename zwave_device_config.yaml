@@ -1,3 +1,7 @@
+# Zwave: device_config file
+# https://www.home-assistant.io/docs/z-wave/installation/
+# make sure to use correct config, carefully!!
+
 # switch.tkb_home_tz68_on_off_switch_socket_switch:
 #   ignored: false
 #   polling_intensity: 0

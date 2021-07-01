@@ -46,3 +46,8 @@ OZW_Log.txt
 # custom_components/
 
 # End of https://www.toptal.com/developers/gitignore/api/homeassistant# home-assistant-config
+
+.cloud
+.storage
+appdeamon
+open-zwave

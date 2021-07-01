@@ -8,6 +8,8 @@ sensors_system_monitor:
         - type: processor_use
         - type: swap_use_percent
         - type: ipv4_address
-          arg: wlan0
+          # arg: wlan0
+          arg: eth0
         - type: throughput_network_in
-          arg: wlan0
+          # arg: wlan0
+          arg: eth0

@@ -1,6 +1,6 @@
-###################################################
-#               HomeLab Main Light                #
-###################################################
+# ###################################################
+# #               HomeLab Main Light                #
+# ###################################################
 
 - alias: Turn on HomeLab main_light when there is movement
   trigger:
@@ -9,9 +9,9 @@
     to: '8'
   action:
     service: homeassistant.turn_on
-    entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
+    entity_id: light.qubino_goap_zmnhhdx_mini_dimmer_level
 
-- alias: Turn off HomeLab main_light when there is movement
+- alias: Turn off HomeLab main_light if there is no movement for 30 min
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
@@ -20,9 +20,9 @@
       minutes: 30
   action:
     service: homeassistant.turn_off
-    entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
+    entity_id: light.qubino_goap_zmnhhdx_mini_dimmer_level
 
-- alias: Turn off HomeLab main_light when there is movement
+- alias: Turn off HomeLab main_light if there is no movement for 30 min at state 254
   trigger:
     platform: state
     entity_id: sensor.fibaro_system_fgms001_zw5_motion_sensor_burglar
@@ -31,4 +31,4 @@
       minutes: 30
   action:
     service: homeassistant.turn_off
-    entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
+    entity_id: light.qubino_goap_zmnhhdx_mini_dimmer_level

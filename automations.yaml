@@ -1,0 +1,9 @@
+- id: '1623195943149'
+  alias: Motion-activated Light
+  description: test
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.presence_2
+      light_target:
+        entity_id: light.fibaro_system_fgd212_dimmer_2_level_2

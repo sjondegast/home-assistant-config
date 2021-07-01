@@ -3,11 +3,12 @@
 ####################################################
 home_assistant_recorder:
   recorder:
-    db_url: !secret mariadb_db_url
+    # db_url: !secret mariadb_db_url
+    db_url: !secret postgresql_db_url
     db_max_retries: 10 #integer (optional, default: 10)
-    db_integrity_check: true #boolean (optional, default: true)
-    auto_purge: true #boolean (optional, default: true)
-    purge_keep_days: 10 #integer (optional, default: 10)
+    # db_integrity_check: true #boolean (optional, default: true)
+    # auto_purge: true #boolean (optional, default: true)
+    # purge_keep_days: 10 #integer (optional, default: 10)
     exclude:
       domains:
         - automation

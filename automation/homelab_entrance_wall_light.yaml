@@ -1,0 +1,23 @@
+###################################################
+#             Turn on Serre Ambilight             #
+###################################################
+
+- alias: Turn on Homelab Outside Wall Light at given time
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+      below: 4
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
+
+- alias: Turn ff Homelab Outside Wall Light at given time
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+      above: 4
+  action:
+    service: homeassistant.turn_off
+    entity_id: switch.qubino_goap_zmnhadx_flush_1_relay_switch
